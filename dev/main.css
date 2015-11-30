@@ -1,14 +1,30 @@
+body {
+  font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+}
+
 .scroller {
-  background: lightblue;
   position: relative;
   display: inline-block;
-  width: 250px;
+  width: 400px;
   top: 0px;
   z-index: 90;
 }
 
+.title {
+  font-size: 20px;
+}
+.main-text {
+  font-size: 12px;
+  font-weight: 200;
+}
+
 .stage {
-  margin-bottom: 200px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.last-stage {
+  margin-bottom: 800px!important;
 }
 
 .main-text {
@@ -25,4 +41,8 @@
   height: 600px;
   width: 600px;
   background-color: #ddd;
+}
+
+.transparent {
+  opacity: 0.2;
 }

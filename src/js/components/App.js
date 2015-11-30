@@ -4,7 +4,7 @@ var Viz = require('./Viz');
 var App = React.createClass({
   render: function(){
     return (
-      <div> 
+      <div className={'container'}> 
         <Scroller />
         <Viz />
       </div>

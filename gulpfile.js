@@ -34,8 +34,6 @@ function getCopier(mode) {
     : config.MINIFIED_JS_OUT;
 
   return function() {
-    console.log(path);
-    console.log(output);
     gulp.src(config.CSS)
       .pipe(concat(config.CSS_OUT))
       .pipe(gulp.dest(path));
@@ -69,15 +67,17 @@ function watch() {
   }));
 
   // make sure when first time running gulp, it'll bundle
-  watcher.bundle()
-    .pipe(source(config.JS_OUT))
-    .pipe(gulp.dest(config.DEV_PATH))
-    .on('update', function () {
-      watcher.bundle()
-        .pipe(source(config.JS_OUT))
-        .pipe(gulp.dest(config.DEV_PATH));
-      console.log('updated index.html and css files');
-    });
+  watcher.on('update', function () {
+    copy();
+    console.log('updated index.html and css files');
+    watcher.bundle()
+      .pipe(source(config.JS_OUT))
+      .pipe(gulp.dest(config.DEV_PATH));
+    console.log('updated js');
+  })
+  .bundle()
+  .pipe(source(config.JS_OUT))
+  .pipe(gulp.dest(config.DEV_PATH));
   console.log('bundled js files');
 
 }
