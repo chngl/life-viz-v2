@@ -1,20 +1,11 @@
+var React = require('react');
 var Actions = require('../flux/LifeVizActions');
 
 var classNames = require('classnames');
 var d3 = require('d3');
+var markdown = require( "markdown" ).markdown;
 
 var Scroller = React.createClass({
-
-  _stages: [
-    {
-      title: 'March 12, 2015',
-      text: 'Yichen is born in Redwood City! I updated to become a DAD!',
-    }, 
-    {
-      title: 'Jun 20, 2015',
-      text: 'Yichen is offically 100 days. We had a huge party for him!',
-    }, 
-  ],
 
   _stagesPositions: [],
   _containerPosition: 0,
@@ -43,7 +34,8 @@ var Scroller = React.createClass({
   _scroll: function() {
     var pos = window.pageYOffset - 10 - this._containerPosition;
     var newStage = d3.bisect(this._stagesPositions, pos);
-    newStage = Math.min(this._stages.length - 1, newStage);
+    console.log(newStage);
+    //newStage = Math.min(this.props.stages.length - 1, newStage);
 
     if (this.state.currentStage !== newStage) {
       this.setState({currentStage: newStage});
@@ -55,16 +47,17 @@ var Scroller = React.createClass({
     return (
       <div className={'scroller'}> 
         {
-          this._stages.map(function(stage, idx) { 
+          this.props.stages.map(function(stage, idx) { 
             var cn = classNames({
               'stage': true,
               'transparent': this.state.currentStage !== idx,
-              'last-stage': this._stages.length - 1 === idx,
+              'last-stage': this.props.stages.length - 1 === idx,
             });
+            var content = markdown.toHTML(stage.text);
             return (
-              <section className={cn}>
+              <section className={cn} key={idx}>
                 <div className={'title'}>{stage.title}</div>
-                <p className={'main-text'}>{stage.text}</p>
+                <div className={'main-text'} dangerouslySetInnerHTML={{__html:content}} />
               </section>
             );
           }.bind(this))

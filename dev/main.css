@@ -5,30 +5,30 @@ body {
 .scroller {
   position: relative;
   display: inline-block;
-  width: 400px;
+  width: 20%;
   top: 0px;
   z-index: 90;
 }
 
 .title {
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: bold;
 }
 .main-text {
-  font-size: 12px;
+  font-size: 14;
   font-weight: 200;
+  height: 100px;
 }
 
 .stage {
-  margin-top: 50px;
+  margin-top: 150px;
+  height: 300px;
   margin-bottom: 50px;
 }
 
 .last-stage {
+  height: 400px;
   margin-bottom: 800px!important;
-}
-
-.main-text {
-  height: 200px;
 }
 
 .viz {
@@ -38,11 +38,23 @@ body {
   z-index: 1;
   margin-left: 0;
 
-  height: 600px;
-  width: 600px;
-  background-color: #ddd;
+  height: 100%;
+  width: 80%;
 }
 
 .transparent {
   opacity: 0.2;
+}
+
+.friends-section {
+  width: 105%;
+  opacity: 0.7;
+}
+
+.friends-title {
+  font-size: 44px;
+  position: relative;
+  top: -800px;
+  left: 200px;
+  color: white;
 }

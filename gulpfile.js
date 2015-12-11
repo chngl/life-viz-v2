@@ -16,6 +16,8 @@ var env = {
 var config = {
   INDEX: './src/index.html',
   CSS: './src/css/**/*.css',
+  ASSETS: './src/assets/**/*.*',
+  ASSETS_OUT: 'assets',
   CSS_OUT: 'main.css',
   JS_OUT: 'main.js',
   MINIFIED_JS_OUT: 'main.min.js',
@@ -34,6 +36,8 @@ function getCopier(mode) {
     : config.MINIFIED_JS_OUT;
 
   return function() {
+    gulp.src(config.ASSETS)
+      .pipe(gulp.dest(path + '/' + config.ASSETS_OUT));
     gulp.src(config.CSS)
       .pipe(concat(config.CSS_OUT))
       .pipe(gulp.dest(path));
