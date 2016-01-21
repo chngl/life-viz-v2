@@ -34,10 +34,8 @@ var Scroller = React.createClass({
   _scroll: function() {
     var pos = window.pageYOffset - 10 - this._containerPosition;
     var newStage = d3.bisect(this._stagesPositions, pos);
-    console.log(newStage);
-    //newStage = Math.min(this.props.stages.length - 1, newStage);
 
-    if (this.state.currentStage !== newStage) {
+    if (newStage < this.props.stages.length && this.state.currentStage !== newStage) {
       this.setState({currentStage: newStage});
       Actions.moveToNewStage(newStage);
     }
