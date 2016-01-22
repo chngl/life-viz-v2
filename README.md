@@ -1,5 +1,7 @@
 # life-viz-v2
 
+Go to http://friends.chngl.me for a live demo :)
+
 How to run the app (assuming you already have node.js on your machine)
 
 clone the repo:
